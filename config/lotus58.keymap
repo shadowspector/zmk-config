@@ -1,0 +1,247 @@
+/*
+ * Copyright (c) 2022 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+
+
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
+
+/*
+// Encoders
+
+&sensors { triggers-per-rotation = <30>; };
+
+&left_encoder { steps = <60>; };
+
+&right_encoder { steps = <60>; };
+*/
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        funcy {
+            bindings = <&sl 4>;
+            key-positions = <28 29>;
+        };
+    };
+
+    behaviors {
+        bckspc_del: bckspc_del {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&kp BACKSPACE>, <&kp DEL>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        hml: homerow_mod_left {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 7 8 9 10 11 18 19 20 21 22 23 32 33 34 35 36 37 46 47 48 49 50 51 52 53 54 55 56 57 58 59 30 31 32 44 45 46 12 24 38>;
+            hold-trigger-on-release;
+        };
+
+        hmr: homerow_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 38 39 40 41 42 43 52 53 54 30 31 44 45 55 56 6 7 8 9 10 11 11 23 37 51 57 58 59>;
+        };
+
+        hmll: homerow_mod_layer_left {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMLL";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 7 8 9 10 11 18 19 20 21 22 23 32 33 34 35 36 37 46 47 48 49 50 51 52 53 54 55 56 57 58 59 30 31 32 44 45 46 12 24 38>;
+            hold-trigger-on-release;
+        };
+
+        hmlr: homerow_mod_layer_right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMLR";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 7 8 9 10 11 18 19 20 21 22 23 32 33 34 35 36 37 46 47 48 49 50 51 52 53 54 55 56 57 58 59 30 31 32 44 45 46 12 24 38>;
+            hold-trigger-on-release;
+        };
+
+        llck: layer_lock {
+            compatible = "zmk,behavior-toggle-layer";
+            label = "LLCK";
+            #binding-cells = <1>;
+            toggle-mode = "flip";
+            locking;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        base_layer {
+            display-name = "Base Layer";
+
+            //   ------------------------------------------------------------------------------------------------------------
+            //  0|  ESC  |  1  |  2  |  3   |  4   |  5   |                     |  6   |  7    |  8    |  9   |   0   |   =   | 11
+            // 12|  TAB  |  Q  |  W  |  E   |  R   |  T   |                     |  Y   |  U    |  I    |  O   |   P   |   [   | 23
+            // 24|  SFT  |  A  |  S  |  D   |  F   |  G   |  RESET  |  | RESET  |  H   |  J    |  K    |  L   |   ;   | ' SFT | 37
+            // 38|  CTRL |  Z  |  X  |  C   |  V   |  B   |  MUTE   |  | PLAY   |  N   |  M    |  ,    |  .   |   /   | \ CTRL| 51
+            // 52                    |ENT RS|  ALT | SPACE|DELETE LW|  |ENTER RS| BSPC |  ] LW | RGUI  |                        59
+
+            bindings = <
+&kp GRAVE  &kp N1            &kp N2            &kp N3    &kp N4        &kp N5                          &kp N6       &kp N7            &kp N8        &kp N9            &kp N0    &kp EQUAL
+&kp TAB    &kp Q             &kp W             &kp E     &kp R         &kp T                           &kp Y        &kp U             &kp I         &kp O             &kp P     &kp MINUS
+&kp LSHFT  &kp A             &hmll 2 S         &kp D     &hmll 1 F     &kp G    &trans     &kp C_MUTE  &kp H        &hmlr 5 J         &kp K         &hmlr 2 L         &kp SEMI  &hmr RSHFT SQT
+&kp LCTRL  &hmll 3 Z         &kp X             &kp C     &kp V         &kp B    &kp LBKT   &llck 6     &kp N        &kp M             &kp COMMA     &kp DOT           &kp FSLH  &mt RCTRL BSLH
+                                               &kp LGUI  &kp LEFT_ALT  &kp ESC  &kp SPACE  &kp RET     &bckspc_del  &kp RIGHT_ALT     &kp LEFT_GUI
+            >;
+
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_DN C_VOL_UP>;
+        };
+
+        nav_layer {
+            display-name = "Nav Layer";
+
+            // ------------------------------------------------------------------------------------------------------------
+            // | `     |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
+            // |       |  !  | HOME|   ^  |  END |  %   |                   | VOL^ |  PGUP |  INS  |  ^   |  PSCR |   -   |
+            // |       |  #  |  <- |   v  | ->   |  $   |        |  |       | VOLv |    <- |   ^   |  ->  |   ~   |   _   |
+            // |       |  @  |  -  |  (   |  )   |  &   |        |  |       | MUTE |  PGDN |   v   |  :   |   *   |   |   |
+            //                     |  F11 |      |      |        |  |       |      |       |  F12  |
+
+            bindings = <
+&kp GRAVE  &kp F1            &kp F2           &kp F3             &kp F4       &kp F5                         &kp F6       &kp F7    &kp F8    &kp F9     &kp F10  &kp F11
+&trans     &kp C_AC_REFRESH  &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &trans       &trans                         &kp PAGE_UP  &kp HOME  &kp UP    &kp END    &trans   &kp F12
+&trans     &kp LEFT_ALT      &kp LCTRL        &kp LEFT_SHIFT     &trans       &trans         &trans  &trans  &kp PG_DN    &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
+&trans     &kp LEFT_GUI      &trans           &trans             &trans       &trans         &trans  &trans  &trans       &trans    &trans    &trans     &trans   &trans
+                                              &trans             &kp LG(TAB)  &kp C_AC_BACK  &trans  &trans  &trans       &llck 1   &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_NEXT C_PREV>;
+        };
+
+        symbol_layer {
+            display-name = "Symbol Layer";
+
+            // ------------------------------------------------------------------------------------------------------------
+            // |BTCLR| BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |OUTTOG|OUTUSB| OUTBT |      | RESET | FLASH |
+            // |     | INS  | PSCR | GUI   | RESET |      |                | PGUP |      |   ^   |      |       |       |
+            // |     | ALT  | CTRL | SHIFT | FLASH | CAPS |      |  |      | PGDN |   <- |   v   |  ->  |  DEL  | BSPC  |
+            // |     | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |  |>  |  <|<| | |>|> |       |       |
+            //                     |       |       |      |      |  |      |      |      |       |
+
+            bindings = <
+&trans  &trans           &trans         &trans            &trans             &trans                         &trans     &trans                &trans                 &trans      &trans             &trans
+&trans  &kp GRAVE        &kp LESS_THAN  &kp GREATER_THAN  &kp DOLLAR         &kp PIPE                       &kp CARET  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp MINUS   &kp UNDERSCORE     &trans
+&trans  &kp EXCLAMATION  &kp ASTERISK   &kp SLASH         &kp EQUAL          &kp AMPERSAND  &trans  &trans  &kp POUND  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMI    &kp DOUBLE_QUOTES  &trans
+&trans  &kp TILDE        &kp PLUS       &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp PERCENT    &trans  &trans  &kp AT     &kp COLON             &kp COMMA              &kp PERIOD  &kp SINGLE_QUOTE   &trans
+                                        &trans            &trans             &trans         &trans  &trans  &trans     &trans                &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        extras_layer {
+            display-name = "Extras Layer";
+            bindings = <
+&bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                     &out OUT_TOG    &out OUT_USB    &out OUT_BLE    &studio_unlock   &sys_reset  &bootloader
+&trans          &kp LC(Z)     &msc SCRL_LEFT  &trans        &trans        &msc SCRL_RIGHT                  &msc SCRL_UP    &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans      &trans
+&trans          &kp LALT      &kp LCTRL       &kp LSHFT     &kp LC(A)     &trans           &trans  &trans  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans      &trans
+&trans          &trans        &kp LC(X)       &kp LC(C)     &kp LC(V)     &trans           &trans  &trans  &trans          &trans          &trans          &trans           &trans      &trans
+                                              &trans        &trans        &kp K_BACK       &trans  &trans  &trans          &llck 3         &trans
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>,
+                <&inc_dec_kp PG_UP PG_DN>;
+        };
+
+        func_layer {
+            bindings = <
+&trans  &kp F1  &kp F2   &kp F3   &kp F4      &trans                      &trans  &trans   &trans  &trans  &trans  &trans
+&trans  &kp F5  &kp F6   &kp F7   &kp F8      &trans                      &trans  &trans   &trans  &trans  &trans  &trans
+&trans  &kp F9  &kp F10  &kp F11  &kp F12     &trans  &trans      &trans  &trans  &trans   &trans  &trans  &trans  &trans
+&trans  &trans  &trans   &trans   &kp LS(F9)  &trans  &kp LA(F4)  &trans  &trans  &trans   &trans  &trans  &trans  &trans
+                         &trans   &trans      &trans  &trans      &trans  &trans  &llck 4  &trans
+            >;
+
+            label = "Func Layer";
+        };
+
+        numpad_layer {
+            bindings = <
+&trans  &trans     &trans        &trans        &trans        &trans                       &trans  &trans   &trans     &trans      &trans  &trans
+&trans  &kp SLASH  &kp N7        &kp NUMBER_8  &kp NUMBER_9  &kp ASTRK                    &trans  &trans   &trans     &trans      &trans  &trans
+&trans  &kp MINUS  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS     &trans  &trans  &trans  &trans   &trans     &trans      &trans  &trans
+&trans  &kp LS(X)  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERCENT  &trans  &trans  &trans  &trans   &kp COMMA  &kp PERIOD  &trans  &trans
+                                 &trans        &trans        &kp N0       &trans  &trans  &trans  &llck 5  &trans
+            >;
+
+            label = "Numpad Layer";
+        };
+
+        games_layer {
+            bindings = <
+&kp ESC    &kp N1  &kp N2  &kp N3        &kp N4        &kp N5                      &kp N6  &kp N7  &kp N8     &kp N9   &kp N0    &kp EQUAL
+&kp TAB    &kp Q   &kp W   &kp E         &kp R         &kp T                       &kp Y   &kp U   &kp I      &kp O    &kp P     &kp MINUS
+&kp LSHFT  &kp A   &kp S   &kp D         &kp F         &kp G   &none      &trans   &kp H   &kp J   &kp K      &kp L    &kp SEMI  &kp APOS
+&kp LCTRL  &kp Z   &kp X   &kp C         &kp V         &kp B   &none      &llck 6  &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp BSLH
+                           &kp LEFT_GUI  &kp LEFT_ALT  &none   &kp SPACE  &trans   &trans  &trans  &trans
+            >;
+
+            label = "Gaymes Layer";
+        };
+    };
+
+    extra_layer {
+        display-name = "Extra Layer";
+
+        // ------------------------------------------------------------------------------------------------------------
+        // |BTCLR| BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |OUTTOG|OUTUSB| OUTBT |      | RESET | FLASH |
+        // |     | INS  | PSCR | GUI   | RESET |      |                | PGUP |      |   ^   |      |       |       |
+        // |     | ALT  | CTRL | SHIFT | FLASH | CAPS |      |  |      | PGDN |   <- |   v   |  ->  |  DEL  | BSPC  |
+        // |     | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |  |>  |  <|<| | |>|> |       |       |
+        //                     |       |       |      |      |  |      |      |      |       |
+
+        bindings = <
+&trans &trans &trans &trans &trans &trans                    &trans  &trans  &trans  &trans     &trans  &trans
+&trans &trans &trans &trans &trans &trans                    &trans  &trans  &trans  &trans     &trans  &trans
+&trans     &trans     &trans    &trans    &trans  &trans     &trans   &trans    &trans     &trans      &trans      &trans  &trans &trans
+&trans     &trans   &trans    &trans   &trans  &trans       &trans   &trans    &trans        &trans      &trans    &trans &trans  &trans
+                                     &trans       &trans       &trans       &trans   &trans    &trans        &trans        &trans
+        >;
+
+        sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
+    };
+};
