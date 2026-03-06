@@ -201,10 +201,10 @@
             // 52                    |ENT RS|  ALT | SPACE|DELETE LW|  |ENTER RS| BSPC |  ] LW | RGUI  |                        59
 
             bindings = <
-&kp GRAVE      &select_line  &kp LC(V)  &kp LC(A)     &kp LC(C)     &kp N5                           &kp N6          &kp N7         &kp N8             &kp N9               &kp N0                                       &kp EQUAL
-&kp TAB        &kp Q         &kp W      &kp E         &kp R         &kp T                            &kp Y           &kp U          &kp I              &kp O                &kp P                                        &kp MINUS
-&bckspc_del    &hml LALT A   &hmll 2 S  &hml LSHFT D  &hmll 1 F     &kp G    &trans     &kp C_MUTE   &kp H           &hmlr 5 J      &hmr RSHFT K       &hmlr 2 L            &homerow_mod_custom_coln RALT 0              &shift_fwsl_bksl
-&hmll 3 MINUS  &hml LGUI Z   &kp X      &kp C         &hml LCTRL V  &kp B    &kp LBKT   &llck 6      &kp N           &hmr RCTRL M   &shift_comma_excl  &shift_dot_question  &homerow_mod_custom_slash RGUI SINGLE_QUOTE  &kp RET
+&kp GRAVE      &select_line  &kp LC(V)  &kp LC(A)     &kp LC(C)     &kp N5                           &kp N6          &kp N7         &kp N8             &kp N9               &kp N0                           &kp EQUAL
+&kp TAB        &kp Q         &kp W      &kp E         &kp R         &kp T                            &kp Y           &kp U          &kp I              &kp O                &kp P                            &kp MINUS
+&bckspc_del    &hml LALT A   &hmll 2 S  &hml LSHFT D  &hmll 1 F     &kp G    &trans     &kp C_MUTE   &kp H           &hmlr 5 J      &hmr RSHFT K       &hmlr 2 L            &homerow_mod_custom_coln RALT 0  &shift_fwsl_bksl
+&hmll 3 MINUS  &hml LGUI Z   &kp X      &kp C         &hml LCTRL V  &kp B    &kp LBKT   &llck 6      &kp N           &hmr RCTRL M   &shift_comma_excl  &shift_dot_question  &hmr RGUI SINGLE_QUOTE           &kp RET
                                         &kp LGUI      &kp LEFT_ALT  &kp ESC  &kp SPACE  &key_repeat  &kp UNDERSCORE  &kp RIGHT_ALT  &kp LEFT_GUI
             >;
 
