@@ -157,7 +157,7 @@
 
         homerow_mod_custom_coln: homerow_mod_custom_coln {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&shift_fwsl_bksl>;
+            bindings = <&kp>, <&homerow_mod_custom_coln>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
