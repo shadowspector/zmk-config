@@ -43,16 +43,16 @@
             #binding-cells = <0>;
             bindings = <&none>;
 
-            ed { trigger-keys = <E>; bindings = <&kp D>: };
-            de { trigger-keys = <D>; bindings = <&kp E>: };
-            ce { trigger-keys = <C>; bindings = <&kp E>: };
-            lo { trigger-keys = <L>; bindings = <&kp O>: };
-            ol { trigger-keys = <O>; bindings = <&kp L>: };
-            un { trigger-keys = <U>; bindings = <&kp N>: };
-            tr { trigger-keys = <T>; bindings = <&kp R>: };
-            rt { trigger-keys = <R>; bindings = <&kp T>: };
-            fr { trigger-keys = <F>; bindings = <&kp R>: };
-            gr { trigger-keys = <G>; bindings = <&kp R>: };
+            ed { trigger-keys = <E>; bindings = <&kp D>; };
+            de { trigger-keys = <D>; bindings = <&kp E>; };
+            ce { trigger-keys = <C>; bindings = <&kp E>; };
+            lo { trigger-keys = <L>; bindings = <&kp O>; };
+            ol { trigger-keys = <O>; bindings = <&kp L>; };
+            un { trigger-keys = <U>; bindings = <&kp N>; };
+            tr { trigger-keys = <T>; bindings = <&kp R>; };
+            rt { trigger-keys = <R>; bindings = <&kp T>; };
+            fr { trigger-keys = <F>; bindings = <&kp R>; };
+            gr { trigger-keys = <G>; bindings = <&kp R>; };
         };
 
         bckspc_del: bckspc_del {
