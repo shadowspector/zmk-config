@@ -38,6 +38,23 @@
     };
 
     behaviors {
+        magic: magic {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&none>;
+
+            ed { trigger-keys = <E>; bindings = <&kp D>: };
+            de { trigger-keys = <D>; bindings = <&kp E>: };
+            ce { trigger-keys = <C>; bindings = <&kp E>: };
+            lo { trigger-keys = <L>; bindings = <&kp O>: };
+            ol { trigger-keys = <O>; bindings = <&kp L>: };
+            un { trigger-keys = <U>; bindings = <&kp N>: };
+            tr { trigger-keys = <T>; bindings = <&kp R>: };
+            rt { trigger-keys = <R>; bindings = <&kp T>: };
+            fr { trigger-keys = <F>; bindings = <&kp R>: };
+            gr { trigger-keys = <G>; bindings = <&kp R>: };
+        };
+
         bckspc_del: bckspc_del {
             compatible = "zmk,behavior-mod-morph";
             bindings = <&kp BACKSPACE>, <&kp DEL>;
@@ -167,6 +184,19 @@
             hold-trigger-on-release;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 38 39 40 41 42 43 52 53 54 30 31 44 45 55 56 6 7 8 9 10 11 11 23 37 51 57 58 59>;
         };
+
+         homerow_mod_magic: homerow_mod_magic {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&kp>, <&magic>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <110>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 38 39 40 41 42 43 52 53 54 30 31 44 45 55 56 6 7 8 9 10 11 11 23 37 51 57 58 59>;
+        };
     };
 
     macros {
@@ -203,8 +233,8 @@
             bindings = <
 &kp GRAVE      &select_line  &kp LC(V)  &kp LC(A)     &kp LC(C)     &kp N5                           &kp N6          &kp N7         &kp N8             &kp N9               &kp N0                                &kp EQUAL
 &kp TAB        &kp Q         &kp W      &kp E         &kp R         &kp T                            &kp Y           &kp U          &kp I              &kp O                &kp P                                 &kp MINUS
-&bckspc_del    &hml LALT A   &hmll 2 S  &hml LSHFT D  &hmll 1 F     &kp G    &trans     &kp C_MUTE   &kp H           &hmlr 5 J      &hmr RSHFT K       &hmlr 2 L            &homerow_mod_custom_coln RIGHT_ALT 0  &shift_fwsl_bksl
-&hmll 3 MINUS  &hml LGUI Z   &kp X      &kp C         &hml LCTRL V  &kp B    &kp LBKT   &llck 6      &kp N           &hmr RCTRL M   &shift_comma_excl  &shift_dot_question  &hmr RGUI SINGLE_QUOTE                &kp RET
+&bckspc_del    &hml LALT A   &hmll 2 S  &hml LSHFT D  &hmll 1 F     &kp G    &trans     &kp C_MUTE   &kp H           &hmlr 5 J      &hmr RSHFT K       &hmlr 2 L            &homerow_mod_magic RIGHT_ALT 0        &shift_fwsl_bksl
+&hmll 3 SINGLE_QUOTE  &hml LGUI Z   &kp X      &kp C         &hml LCTRL V  &kp B    &kp LBKT   &llck 6      &kp N    &hmr RCTRL M   &shift_comma_excl  &shift_dot_question  &hmr RGUI SINGLE_QUOTE         &kp RET
                                         &kp LGUI      &kp LEFT_ALT  &kp ESC  &kp SPACE  &key_repeat  &kp UNDERSCORE  &kp RIGHT_ALT  &kp LEFT_GUI
             >;
 
