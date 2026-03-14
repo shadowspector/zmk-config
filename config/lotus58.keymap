@@ -38,6 +38,34 @@
     };
 
     behaviors {
+
+        magic_strdy: magic_strdy {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&none>;
+
+            ao { trigger-keys = <A>; bindings = <&kp O>; };
+            cy { trigger-keys = <C>; bindings = <&kp Y>; };
+            dy { trigger-keys = <D>; bindings = <&kp Y>; };
+            eu { trigger-keys = <E>; bindings = <&kp U>; };
+            gy { trigger-keys = <G>; bindings = <&kp Y>; };
+            ion { trigger-keys = <I>; bindings = <&kp O &kp N>; };f
+            lk { trigger-keys = <L>; bindings = <&kp K>; };
+            ment { trigger-keys = <M>; bindings = <&kp E &kp N &kp T>; };
+            nion { trigger-keys = <N>; bindings = <&kp I &kp O &kp N>; };
+            oa { trigger-keys = <O>; bindings = <&kp A>; };
+            py { trigger-keys = <P>; bindings = <&kp Y>; };
+            quen { trigger-keys = <Q>; bindings = <&kp U &kp E &kp N>; };
+            rl { trigger-keys = <R>; bindings = <&kp L>; };
+            sk { trigger-keys = <S>; bindings = <&kp K>; };
+            tment { trigger-keys = <T>; bindings = <&kp M &kp E &kp N &kp T>; };
+            ue { trigger-keys = <U>; bindings = <&kp E>; };
+            yp { trigger-keys = <Y>; bindings = <&kp P>; };
+            the { trigger-keys = <SPACE>; bindings = <&kp T &kp H &kp E>; };
+            
+            
+        };
+
         magic: magic {
             compatible = "zmk,behavior-adaptive-key";
             #binding-cells = <0>;
@@ -91,6 +119,11 @@
             gr {
                 trigger-keys = <G>;
                 bindings = <&kp R>;
+            };
+
+            the {
+                trigger-keys = <SPACE>;
+                bindings = <&kp T &kp H &kp E>
             };
         };
 
@@ -237,12 +270,7 @@
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 38 39 40 41 42 43 52 53 54 30 31 44 45 55 56 6 7 8 9 10 11 11 23 37 51 57 58 59>;
         };
 
-        magic_strdy: magic_strdy {
-            compatible = "zmk,behavior-adaptive-key";
-            #binding-cells = <0>;
-            bindings = <&none>;
-            label = "MAGIC_STRDY";
-        };
+        
     };
 
     macros {
