@@ -49,7 +49,7 @@
             dy { trigger-keys = <D>; bindings = <&kp Y>; };
             eu { trigger-keys = <E>; bindings = <&kp U>; };
             gy { trigger-keys = <G>; bindings = <&kp Y>; };
-            ion { trigger-keys = <I>; bindings = <&kp O &kp N>; };f
+            ion { trigger-keys = <I>; bindings = <&kp O &kp N>; };
             lk { trigger-keys = <L>; bindings = <&kp K>; };
             ment { trigger-keys = <M>; bindings = <&kp E &kp N &kp T>; };
             nion { trigger-keys = <N>; bindings = <&kp I &kp O &kp N>; };
