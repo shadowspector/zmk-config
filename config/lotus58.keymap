@@ -400,7 +400,7 @@
             bindings = <
 &kp GRAVE     &select_line  &kp LC(V)  &kp LC(A)     &kp LC(C)     &mkp MB1                          &kp N6          &kp N7        &kp N8             &kp N9               &kp N0                  &kp EQUAL
 &kp TAB       &kp V         &kp M      &kp L         &kp C         &kp P                             &kp B           &magic_strdy  &kp U              &kp O                &kp Q                   &shift_fwsl_bksl
-&bckspc_del   &hml LALT S   &hmll 3 T  &hml LSHFT R  &hmll 3 D     &kp Y     &sl 8      &kp C_MUTE   &kp F           &hmlr 6 N     &hmr RSHFT E       &hmlr 3 A            &hmr RIGHT_ALT I        &kp MINUS
+&bckspc_del   &hml LALT S   &hmll 3 T  &hml LSHFT R  &hmll 2 D     &kp Y     &sl 8      &kp C_MUTE   &kp F           &hmlr 6 N     &hmr RSHFT E       &hmlr 3 A            &hmr RIGHT_ALT I        &kp MINUS
 &hmll 4 SEMI  &hml LGUI X   &kp K      &kp J         &hml LCTRL G  &kp W     &kp LBKT   &llck 7      &kp Z           &hmr RCTRL H  &shift_comma_excl  &shift_dot_question  &hmr RGUI SINGLE_QUOTE  &kp RET
                                        &kp LGUI      &kp LEFT_ALT  &kp ESC   &kp SPACE  &key_repeat  &kp UNDERSCORE  &tog 1        &kp LEFT_GUI
             >;
