@@ -143,7 +143,7 @@
                 trigger-keys = <SPACE>;
                 bindings = <&sk LSHFT>;
                 max-prior-idle-ms = <500>;
-            }
+            };
         };
 
       
