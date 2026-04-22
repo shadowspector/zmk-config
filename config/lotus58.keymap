@@ -144,7 +144,7 @@
                 bindings = <&sk LSHFT>;
                 max-prior-idle-ms = <500>;
             }
-        }
+        };
 
       
         bckspc_del: bckspc_del {
